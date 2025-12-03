@@ -1,0 +1,273 @@
+/* --- CSS Reset (Optional, but good practice) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- 1. CSS Variables --- */
+:root {
+    /* Color Palette */
+    --color-primary: #1e3a8a;       /* Deep Blue (Header/Text) */
+    --color-secondary: #fcd34d;     /* Sand/Gold (Accent/Buttons) */
+    --color-background: #fcfbf8;    /* Near-White/Sand Background */
+    --color-text-dark: #333333;
+    --color-text-light: #ffffff;
+    --color-link: #06b6d4;          /* Cyan for links */
+
+    /* Typography */
+    --font-heading: 'Poppins', 'Merriweather', Georgia, serif;
+    --font-body: 'Open Sans', Arial, sans-serif;
+    --font-size-base: 1.1rem;
+
+    /* Layout */
+    --max-width: 1440px;
+    --padding-section: 3rem 0;
+
+    /* Effects */
+    --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --transition-speed: 0.3s;
+}
+
+/* --- 2. Base Styles --- */
+body {
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    color: var(--color-text-dark);
+    background-color: var(--color-background);
+    line-height: 1.6;
+}
+
+/* Fixed Width and Centering (1280px) */
+header, main, footer {
+    width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* Headings */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    line-height: 1.2;
+    margin-bottom: 0.8em;
+}
+
+h1 { font-size: 2.5em; margin: 0; } /* Made H1 larger for center display */
+h2 { font-size: 2.5em; margin-bottom: 0.5rem; }
+h3 { font-size: 1.8em; }
+
+/* Links */
+a:link, a:visited {
+    color: var(--color-link);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+a:hover, a:focus {
+    color: var(--color-secondary); /* Visual cue for hover/focus */
+    text-decoration: underline;
+}
+
+#home-heading {
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px; /* Added rounded corners to images */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
+}
+
+/* --- 3. Header & Navigation Styles (UPDATED FOR STACKED LAYOUT) --- */
+header {
+    display: flex;
+    flex-direction: column; /* Stack H1 and NAV vertically */
+    align-items: center; /* Center them horizontally */
+    padding: 1.5rem 0;
+    border-bottom: 3px solid var(--color-secondary);
+    background-color: var(--color-primary);
+    
+}
+header h1 {
+    color: var(--color-text-light);
+}
+
+nav {
+    margin-top: 1rem; /* Add spacing between the H1 and the nav menu */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    padding: 0.5rem 0;
+}
+
+/* Link Visual Clues: Current/Active Page */
+nav a.current,
+nav a[href="index.html"] {
+    color: var(--color-secondary);
+    border-bottom: 3px solid var(--color-primary);
+}
+
+/* --- 4. Hero Section Styles --- */
+
+.hero {
+    /* Applied the required 'swiss-valley' image as a background via CSS */
+    background-image: url('assets/images/swiss-valley.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* This line horizontally centers the .hero-content block */
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.hero-title {
+    font-size: 1.75em;
+    color: var(--color-text-light);
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    margin-bottom: 1rem;
+}
+
+.hero-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    /* Semi-transparent dark overlay for better text contrast against the image */
+    background-color: rgba(30, 58, 138, 0.85);
+    border-radius: 12px;
+    color: var(--color-text-light);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+
+    /* Centers the inner h2 and p elements */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content h2 {
+    color: var(--color-secondary);
+    text-shadow: 1px 1px 3px var(--color-primary);
+    padding: 1rem;
+}
+
+.hero-content .intro-text {
+    font-size: 1.2em;
+    margin-bottom: 0;
+}
+
+
+/* --- 5. Content Group Styles (Side-by-Side Layout) --- */
+.content-group {
+    /* MAKE CONTENT GROUPS SIDE BY SIDE */
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically center image and text block */
+    padding: 3rem 0;
+    gap: 4rem; /* Space between image and text */
+    max-width: 1000px;
+    margin: 0 auto; /* Center the content group within the main area */
+}
+
+/* Base styling for the two columns (50% each) */
+.feature-image,
+.feature-text {
+    flex: 1; /* Allows both children to share available space equally (50/50) */
+}
+
+.feature-text {
+    padding: 1rem 0;
+    text-align: left;
+}
+.feature-text h3 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Add a visual divider between the two main content sections */
+.content-group:first-of-type {
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 2rem;
+}
+
+/* Feature Text Specific Styles & FORM STATES */
+
+/* Full-width input fields */
+input[type=text], input[type=email], input[type=tel], textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: 2px solid transparent; /* Added invisible border so layout doesn't jump on focus */
+    background: #f1f1f1;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* FOCUS STATE: Highlight the input when clicked */
+input[type=text]:focus, 
+input[type=email]:focus, 
+input[type=tel]:focus, 
+textarea:focus {
+    background-color: #ffffff;
+    border-color: var(--color-primary); /* Blue border */
+    outline: none; /* Remove default browser outline */
+}
+
+/* INVALID STATE: Show red border if validation fails */
+input:invalid, 
+textarea:invalid {
+    border-color: #ff4444; /* Red warning color */
+    background-color: #fff0f0; /* Slight red tint background */
+}
+
+/* Submit Button Styles */
+button {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    font-family: var(--font-body); /* Fixed typo 'fonts' to 'font-body' */
+    font-size: 1rem;
+    transition: opacity 0.3s, background-color 0.3s;
+}
+
+/* HOVER STATE: Visual feedback for button */
+button:hover {
+    opacity: 1;
+    background-color: var(--color-secondary); /* Changes to Gold */
+    color: var(--color-primary); /* Changes text to dark blue for contrast */
+}
+
+/* --- 6. Footer Styles --- */
+footer {
+    padding: 2rem 0;
+    background-color: var(--color-text-dark);
+    color: var(--color-background);
+    text-align: center;
+    margin-top: 4rem;
+}
+
+footer p {
+    font-size: 0.9em;
+    margin: 0.5rem 0;
+}
