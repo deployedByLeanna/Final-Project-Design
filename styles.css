@@ -123,7 +123,7 @@ nav a[href="index.html"] {
 
 /* --- 4. Hero Section Styles --- */
 
-.hero {
+.hero-header {
     /* Applied the required 'swiss-valley' image as a background via CSS */
     background-image: url('assets/images/swiss-valley.jpg');
     background-size: cover;
